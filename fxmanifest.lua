@@ -1,76 +1,56 @@
---[[    cfx.re script information    ]]--
-fx_version 'cerulean'
-use_experimental_fxv2_oal 'yes'
-lua54 'yes'
-game 'gta5'
+--[[------------------------------------------------------
+----       For Support - discord.gg/threeamigos       ----
+----       Docs - https://docs.threeamigos.shop       ----
+---- Do not edit if you do not know what you"re doing ----
+--]]------------------------------------------------------
 
---[[    resource information    ]]--
-name 'tam_template' -- Resource Name
-author 'Hakko' -- Resource Author
-version '1.0.0' -- Resource Version
-license 'GNU General Public License v3.0' -- Resource License
-repository 'https://github.com/ThreeAmigosModding/tam_template' -- Resource Repository
-description 'template for making scripts' -- Resource Description
+game "gta5"
+lua54 "yes"
+fx_version "cerulean"
+use_experimental_fxv2_oal "yes"
 
---[[    dependency information    ]]--
-dependencies {
-    'ox_lib',
-    'oxmysql',
-    'ox_target'
-}
+name "TAM_Template"
+author "ThreeAmigosModding"
+description "Resource Template to clone for ease of use.!"
+version "1.0.0"
 
---[[    data information    ]]--
-ui_page {
-    -- main html file
-    -- uncomment as needed
-    --[[
-        'data/web/index.html'
-    ]]
-
-}
+client_debug_mode "false"
+server_debug_mode "false"
+experimental_features_enabled "0"
 
 files {
-    -- all other html / css / js files
-    -- uncomment as needed
-    --[[
-        'data/web/index.html',
-        'data/web/style.css',
-        'data/web/script.js'
-        'data/data.meta',
-    ]]
+    "data/**",
+    "modules/**/client.lua",
+    "web/index.html",
+    "web/script.js",
+    "web/styles.css",
+    "web/**/*",
+    "locales/*.json",
+    "audio/**",
+    "stream/*.ytyp"
 }
 
---[[    manifest information    ]]--
+dependencies {
+    "/server:7290",
+    "/onesync",
+    "ox_lib",
+}
+
+ui_page "web/index.html"
+
+data_file "AUDIO_WAVEPACK" "audio"
+data_file "AUDIO_SOUNDDATA" "audio/your_dat54.dat"
+data_file "DLC_ITYP_REQUEST" "stream/PROPS.ytyp"
+
 shared_scripts {
-    -- bridge data
-    'bridge/esx/shared.lua',
-    'bridge/ox/shared.lua',
-    'bridge/qb/shared.lua',
-    -- main data
-    'data/info.lua',
-    'data/version.txt',
-    'shared/config.lua'
+    "@ox_lib/init.lua",
+    "shared/main.lua"
 }
 
 client_scripts {
-    -- bridge data
-    'bridge/esx/client.lua',
-    'bridge/ox/client.lua',
-    'bridge/qb/client.lua',
-    -- main data
-    'client/main.lua',
-    'client/event/*.lua'
+    "client/main.lua"
 }
 
 server_scripts {
-    -- bridge data
-    'bridge/esx/server.lua',
-    'bridge/ox/server.lua',
-    'bridge/qb/server.lua',
-    -- main data
-    'server/main.lua',
-    'server/version.lua',
-    'server/event/*.lua'
+    "server/main.lua"
 }
-
--- DATA_FILE 'DATATYPE' 'data/data.meta'
